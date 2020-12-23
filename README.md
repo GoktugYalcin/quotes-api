@@ -1,6 +1,6 @@
 # quotes-api
-Quotes API with Node.js and Express.js
-I got the json file, which for the quotes; from [there](https://github.com/JamesFT/Database-Quotes-JSON)
+Quotes API with Node.js and Express.js\
+I got the json file, which for the quotes; from [there](https://github.com/JamesFT/Database-Quotes-JSON)\
 You can access API from [here](https://quotes-node-api.herokuapp.com)
 
 # How to use
