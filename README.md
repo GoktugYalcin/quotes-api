@@ -27,4 +27,4 @@ You can access the API from local, `localhost:1998` or `127.0.0.1:1998`
  - **Establish a Real-Time Database**
   \
   \
- <b>* = You can get name of the author, which you want to search; from the `/api/authors`</b>
+<b>* = You can get name of the author, which you want to search; from the `/api/authors`</b>
