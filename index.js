@@ -12,8 +12,21 @@ var sozler = require('./quotes.json');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.listen(1998, function(){
-console.log("Port acildi: 1998");
+var server = app.listen(process.env.PORT || 8080, function () {
+    var port = server.address().port;
+    console.log("Aktiflestirilen port : ", port);
+  });
+
+app.get('/', function(req, res){
+    res.send(sozler);
+});
+
+app.get('/api', function(req, res){
+    res.send(sozler);
+});
+
+app.get('/api/teapot', function(req, res){
+    res.send({icerik: "Gun gelecek; buralar dutluktan fazlasi olacak", sahibi: "A. Goktug Yalcin"});
 });
 
 app.get('/api/sozler/:num', function(req, res){
