@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 const { exists } = require('fs');
 const { exit } = require('process');
 var app = express();
-
+var jmespath = require('jmespath');
 var sozler = require('./quotes.json');
 
 
@@ -23,6 +23,25 @@ app.get('/', function(req, res){
 
 app.get('/api', function(req, res){
     res.send(sozler);
+});
+
+app.get('/api/searchAuthor/:author', function(req, res){
+    if(req.params.author){
+        let param = req.params.author.replace("%20",' ');
+        console.log(param);
+        var sonuc = jmespath.search(sozler,"[? sahibi =="+param+"]");
+        res.send(sonuc);
+       // res.send({log: 'Not found in datapool'});
+    }
+    else
+    res.send({log: 'Please enter a param'});
+});
+
+app.get('/api/authors', function(req,res){
+
+    var query = jmespath.search(sozler,"[*].sahibi");
+    res.send(query);
+
 });
 
 app.get('/api/teapot', function(req, res){
